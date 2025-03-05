@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
     <title>Stefan Spanic</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -303,6 +303,26 @@
                 }
             });
         });
+
+        // Force mobile view in embedded browsers
+        (function() {
+            const ua = navigator.userAgent;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+            const isInAppBrowser = /FBAN|FBAV|Instagram|Discord|Line|Snapchat|TikTok|Pinterest/i.test(ua);
+            
+            if (isMobile || isInAppBrowser) {
+            const viewportMeta = document.querySelector('meta[name="viewport"]');
+            if (viewportMeta) {
+                viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+            } else {
+                const meta = document.createElement('meta');
+                meta.name = 'viewport';
+                meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                document.head.appendChild(meta);
+            }
+            }
+        })();
+                
     </script>
 </body>
 </html>
