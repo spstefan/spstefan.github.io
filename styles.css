@@ -301,13 +301,12 @@ section { margin-bottom: 3.5rem; }
 .cv-entry:last-child { margin-bottom: 0; }
 .cv-entry-head {
     display: flex;
-    justify-content: space-between;
     align-items: baseline;
-    gap: 1rem;
     flex-wrap: wrap;
+    column-gap: 0.4rem;
+    row-gap: 0.1rem;
 }
-.cv-entry-head h3 { font-size: 1rem; font-weight: 600; }
-.cv-entry-head h3 .cv-where { font-weight: 400; }
+.cv-title { font-size: 1rem; font-weight: 600; }
 .cv-when {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -315,12 +314,12 @@ section { margin-bottom: 3.5rem; }
     color: var(--ink-faint);
     text-transform: uppercase;
     white-space: nowrap;
+    margin-left: auto;   /* push the date to the right edge */
 }
 .cv-where {
     font-family: var(--sans);
     font-size: 0.82rem;
     color: var(--ink-soft);
-    white-space: wrap;
 }
 .cv-entry p { font-size: 0.92rem; margin-bottom: 0.25rem; line-height: 1.5; }
 .cv-entry ul { margin: 0.2rem 0 0; padding-left: 1.3rem; font-size: 0.92rem; }
@@ -377,4 +376,8 @@ section { margin-bottom: 3.5rem; }
     .article-header h1 { font-size: 1.9rem; }
     .masthead { margin-bottom: 2rem; }
     .nav { gap: 1.1rem; }
+    /* CV: keep title + date on line 1, drop the location onto its own
+       line just below (tighter than the gap between entries) */
+    .cv-title { flex: 1 1 0; min-width: 0; }   /* basis 0 keeps the date on line 1 even when the title wraps */
+    .cv-entry-head .cv-where { order: 1; flex-basis: 100%; }
 }
