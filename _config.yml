@@ -1,0 +1,27 @@
+title: Stefan Spanic
+description: "Data & technology professional — industrial data platforms, data governance, and digital transformation."
+author: Stefan Spanic
+url: "https://stefanspanic.com"
+baseurl: ""
+
+# Posts live at stefanspanic.com/writing/<post-title>/
+permalink: /writing/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Apply the post layout (and light up the "Writing" nav tab) to everything in _posts/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      nav_id: writing
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

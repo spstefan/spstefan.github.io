@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{% if page.head_title %}{{ page.head_title }}{% elsif page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    {%- assign desc = page.description | default: page.summary | default: site.description %}
+    <meta name="description" content="{{ desc | strip_html | normalize_whitespace }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <!-- Open Graph / link previews (LinkedIn, etc.) -->
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{{ desc | strip_html | normalize_whitespace }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:image" content="{{ '/profilepic.jpg' | absolute_url }}">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+</head>
+<body>
+    <div class="wrap">
+        <header class="masthead">
+            <div class="masthead-inner">
+                <a href="{{ '/' | relative_url }}" class="brand">Stefan Spanic</a>
+                <nav class="nav">
+                    <a href="{{ '/' | relative_url }}"{% if page.nav_id == 'about' %} aria-current="page"{% endif %}>About</a>
+                    <a href="{{ '/cv/' | relative_url }}"{% if page.nav_id == 'cv' %} aria-current="page"{% endif %}>CV</a>
+                    <a href="{{ '/writing/' | relative_url }}"{% if page.nav_id == 'writing' %} aria-current="page"{% endif %}>Writing</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            {{ content }}
+        </main>
+
+        <footer class="site-footer">
+            <span>&copy; 2026 Stefan Spanic</span>
+            <span>
+                <a href="mailto:stefanspa@icloud.com">Email</a> &middot;
+                <a href="https://linkedin.com/in/stefanspanic" target="_blank" rel="noopener">LinkedIn</a> &middot;
+                <a href="https://github.com/spstefan" target="_blank" rel="noopener">GitHub</a>
+            </span>
+        </footer>
+    </div>
+</body>
+</html>

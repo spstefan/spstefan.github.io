@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<a class="back-link" href="{{ '/writing/' | relative_url }}">Back to writing</a>
+<article class="article">
+    <header class="article-header">
+        <h1>{{ page.title }}</h1>
+        <div class="article-date">{{ page.date | date: "%B %-d, %Y" }}</div>
+    </header>
+    <div class="article-body">
+        {{ content }}
+    </div>
+</article>
